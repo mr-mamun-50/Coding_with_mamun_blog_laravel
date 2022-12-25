@@ -32,6 +32,12 @@
             <span>Category</span></a>
     </li>
 
+    <li class="nav-item @if ($page == 'posts') active @endif">
+        <a class="nav-link" href={{ route('post.index') }}>
+            <i class="fas fa-fw fa-table"></i>
+            <span>Posts</span></a>
+    </li>
+
 
     <!-- Heading -->
     <div class="sidebar-heading">
@@ -61,7 +67,7 @@
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
-        <button class="rounded-circle border-0" id="sidebarToggle"></button>
+        <button class="border-0 rounded-circle" id="sidebarToggle"></button>
     </div>
 
 </ul>
