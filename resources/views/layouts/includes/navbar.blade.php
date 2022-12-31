@@ -1,14 +1,14 @@
 <header class="navigation fixed-top">
     <div class="container">
         <nav class="navbar navbar-expand-lg navbar-white">
-            <a class="order-1 navbar-brand" href="index.html">
+            <a class="order-1 navbar-brand" href="{{ url('/') }}">
                 <img class="img-fluid" width="100px" src="{{ asset('usr_assets/images/logo.png') }}"
                     alt="Reader | Hugo Personal Blog Template">
             </a>
             <div class="order-3 text-center collapse navbar-collapse order-lg-2" id="navigation">
                 <ul class="mx-auto navbar-nav">
                     <li class="nav-item">
-                        <a class="nav-link" href="contact.html">Home</a>
+                        <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="contact.html">About</a>
