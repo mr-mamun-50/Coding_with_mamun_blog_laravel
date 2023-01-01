@@ -32,6 +32,7 @@
                         <tr>
                             <td>{{ ++$key }}</td>
                             <td>{{ $post->title }}</td>
+                            <td>{{ $post->subtitle }}</td>
                             <td>{{ $post->description }}</td>
                             <td>{{ $post->category_name }}</td>
                             <td>
@@ -84,6 +85,18 @@
                                                     class="form-control @error('title') is-invalid @enderror" name="title"
                                                     value="{{ $post->title }}">
                                                 @error('title')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="post_name">Subtitle</label>
+                                                <input type="text"
+                                                    class="form-control @error('subtitle') is-invalid @enderror"
+                                                    name="subtitle" value="{{ $post->subtitle }}">
+                                                @error('subtitle')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
                                                     </span>
@@ -158,6 +171,17 @@
                             <input type="text" class="form-control @error('title') is-invalid @enderror"
                                 name="title" value="{{ old('title') }}">
                             @error('title')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="form-group">
+                            <label for="post_name">Subtitle</label>
+                            <input type="text" class="form-control @error('subtitle') is-invalid @enderror"
+                                name="subtitle" value="{{ old('subtitle') }}">
+                            @error('subtitle')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>

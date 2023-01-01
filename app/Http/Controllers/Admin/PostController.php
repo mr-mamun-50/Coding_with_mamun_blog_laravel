@@ -48,12 +48,14 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'subtitle' => 'required',
             'category_id' => 'required',
             'description' => 'required',
         ]);
 
         $data = [
             'title' => $request->title,
+            'subtitle' => $request->subtitle,
             'category_id' => $request->category_id,
             'description' => $request->description,
             'status' => $request->status,
@@ -69,7 +71,8 @@ class PostController extends Controller
 
         Post::create($data);
 
-        return redirect()->back()->with('success', 'Post created successfully!');
+        $notify = ['message' => 'Post created successfully!', 'alert-type' => 'success'];
+        return redirect()->back()->with($notify);
     }
 
     /**
@@ -105,12 +108,14 @@ class PostController extends Controller
     {
         $request->validate([
             'title' => 'required',
+            'subtitle' => 'required',
             'category_id' => 'required',
             'description' => 'required',
         ]);
 
         $data = [
             'title' => $request->title,
+            'subtitle' => $request->subtitle,
             'category_id' => $request->category_id,
             'description' => $request->description,
             'status' => $request->status,
@@ -129,7 +134,8 @@ class PostController extends Controller
 
         Post::where('id', $id)->update($data);
 
-        return redirect()->back()->with('success', 'Post updated successfully!');
+        $notify = ['message' => 'Post updated successfully!', 'alert-type' => 'success'];
+        return redirect()->back()->with($notify);
     }
 
     /**
@@ -146,6 +152,7 @@ class PostController extends Controller
         }
         $post->delete();
 
-        return redirect()->back()->with('success', 'Post deleted successfully!');
+        $notify = ['message' => 'Post deleted successfully!', 'alert-type' => 'success'];
+        return redirect()->back()->with($notify);
     }
 }

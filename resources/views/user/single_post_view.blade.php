@@ -20,6 +20,7 @@
                                 Category: <b class="text-primary">{{ $post->category_name }}</b>
                             </li>
                         </ul>
+                        <h4 class="card-text">{{ $post->subtitle }}</h4>
                         <div class="content">
                             <p>{{ $post->description }}</p>
                         </div>

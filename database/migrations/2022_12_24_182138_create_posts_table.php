@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('subtitle');
             $table->text('description');
             $table->string('thumbnail')->nullable();
             $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');

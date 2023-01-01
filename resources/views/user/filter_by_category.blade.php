@@ -27,6 +27,7 @@
                                         Category: <b class="text-primary">{{ $post->category_name }}</b>
                                     </li>
                                 </ul>
+                                <p class="card-text">{{ $post->subtitle }}</p>
                                 <a href="{{ route('single_post_view', $post->id) }}" class="btn btn-outline-primary">Read
                                     More</a>
                             </div>
