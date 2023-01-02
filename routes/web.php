@@ -22,10 +22,11 @@ Route::get('/', [UserController::class, 'index']);
 Route::get('/posts/{id}', [UserController::class, 'sigle_post_view'])->name('single_post_view');
 Route::get('/posts/category/{category_id}', [UserController::class, 'filter_by_category'])->name('filter_by_category');
 
+Route::group(['middleware' => 'auth'], function () {
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+    Route::post('/posts/{id}/comment/store', [UserController::class, 'comment_store'])->name('comment_store');
+});
+
 
 require __DIR__ . '/auth.php';
 
