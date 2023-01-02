@@ -5,22 +5,6 @@
             stroke-width="2" />
     </svg>
 
-    <div class="mb-5 text-center instafeed">
-        <h2 class="mb-4 h3">INSTAGRAM POST</h2>
-
-        <div class="instagram-slider">
-            <div class="instagram-post"><img src="{{ asset('usr_assets/images/instagram/1.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('usr_assets/images/instagram/2.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('usr_assets/images/instagram/4.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('usr_assets/images/instagram/3.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('usr_assets/images/instagram/2.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('usr_assets/images/instagram/1.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('usr_assets/images/instagram/3.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('usr_assets/images/instagram/4.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('usr_assets/images/instagram/2.jpg') }}"></div>
-            <div class="instagram-post"><img src="{{ asset('usr_assets/images/instagram/4.jpg') }}"></div>
-        </div>
-    </div>
 
     <div class="container">
         <div class="row align-items-center">

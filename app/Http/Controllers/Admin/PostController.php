@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Intervention\Image\Facades\Image;
 
 class PostController extends Controller
 {
@@ -65,7 +66,12 @@ class PostController extends Controller
             $file = $request->file('thumbnail');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->move(public_path('post_thumbnails'), $filename);
+            // $file->move(public_path('post_thumbnails'), $filename);
+
+            // Resize image
+            $thumbnail = Image::make($file);
+            $thumbnail->resize(600, 360)->save(public_path('post_thumbnails/' . $filename));
+
             $data['thumbnail'] = $filename;
         }
 
@@ -128,7 +134,12 @@ class PostController extends Controller
             $file = $request->file('thumbnail');
             $extension = $file->getClientOriginalExtension();
             $filename = time() . '.' . $extension;
-            $file->move(public_path('post_thumbnails'), $filename);
+            // $file->move(public_path('post_thumbnails'), $filename);
+
+            // Resize image
+            $thumbnail = Image::make($file);
+            $thumbnail->resize(600, 360)->save(public_path('post_thumbnails/' . $filename));
+
             $data['thumbnail'] = $filename;
         }
 

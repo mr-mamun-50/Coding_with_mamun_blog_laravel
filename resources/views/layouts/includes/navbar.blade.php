@@ -28,14 +28,31 @@
                 <ul class="mx-auto navbar-nav">
                     <li class="nav-item dropdown">
                         <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true"
-                            aria-expanded="false">Account <i class="ml-1 ti-angle-down"></i>
+                            aria-expanded="false">
+                            @auth
+                                @if (auth()->user()->photo)
+                                    <img src="{{ asset('images/user_photos/' . auth()->user()->photo) }}" alt=""
+                                        class="rounded-circle" style="height: 30px">
+                                @else
+                                    <img src="{{ asset('images/user_photos/user.png') }}" alt=""
+                                        class="rounded-circle" style="height: 30px">
+                                @endif
+                            @else
+                                <img src="{{ asset('images/user_photos/user.png') }}" alt="" class="rounded-circle"
+                                    style="height: 30px">
+                            @endauth
+
+                            <i class="ml-1 ti-angle-down"></i>
                         </a>
                         <div class="dropdown-menu">
 
                             @auth
-                                <a class="dropdown-item" href="author.html">Profile</a>
+                                <a class="dropdown-item" href="author.html">{{ auth()->user()->name }}</a>
 
-                                <a class="dropdown-item" href="author-single.html">Logout</a>
+                                <form action="{{ route('logout') }}" method="POST">
+                                    @csrf
+                                    <button type="submit" class="dropdown-item">Logout</button>
+                                </form>
                             @else
                                 <a class="dropdown-item" href="{{ route('login') }}">Login</a>
 

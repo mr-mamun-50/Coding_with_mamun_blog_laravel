@@ -19,7 +19,8 @@
                 <thead>
                     <tr>
                         <th>SL</th>
-                        <th>Name</th>
+                        <th>Title</th>
+                        <th>Subtitle</th>
                         <th>Description</th>
                         <th>Category</th>
                         <th>Thumbnail</th>
@@ -33,7 +34,11 @@
                             <td>{{ ++$key }}</td>
                             <td>{{ $post->title }}</td>
                             <td>{{ $post->subtitle }}</td>
-                            <td>{{ $post->description }}</td>
+                            <td>
+                                @php
+                                    echo $post->description;
+                                @endphp
+                            </td>
                             <td>{{ $post->category_name }}</td>
                             <td>
                                 <img src="{{ asset('post_thumbnails/' . $post->thumbnail) }}" alt=""
@@ -63,9 +68,9 @@
 
 
                         <!-- post edit Modal-->
-                        <div class="modal fade" id="{{ 'Edit' . $post->id . 'postModal' }}" tabindex="-1" role="dialog"
+                        <div class="modal " id="{{ 'Edit' . $post->id . 'postModal' }}" tabindex="-1" role="dialog"
                             aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog" role="document">
+                            <div class="modal-dialog modal-lg" role="document">
                                 <div class="modal-content">
                                     <div class="modal-header">
                                         <h5 class="modal-title" id="exampleModalLabel">{{ $post->title }}</h5>
@@ -116,7 +121,7 @@
 
                                             <div class="form-group">
                                                 <label for="post_name">Post Description</label>
-                                                <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="5">{{ $post->description }}</textarea>
+                                                <textarea class="summernote form-control @error('description') is-invalid @enderror" name="description" rows="5">{{ $post->description }}</textarea>
                                                 @error('description')
                                                     <span class="invalid-feedback" role="alert">
                                                         <strong>{{ $message }}</strong>
@@ -152,9 +157,9 @@
 
 
     <!-- post add Modal-->
-    <div class="modal fade" id="AddpostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    <div class="modal " id="AddpostModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
-        <div class="modal-dialog" role="document">
+        <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Add post</h5>
@@ -200,7 +205,8 @@
 
                         <div class="form-group">
                             <label for="post_name">Post Description</label>
-                            <textarea class="form-control @error('description') is-invalid @enderror" name="description" rows="5">{{ old('description') }}</textarea>
+                            <textarea class="summernote form-control @error('description') is-invalid @enderror" name="description"
+                                rows="5">{{ old('description') }}</textarea>
                             @error('description')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>

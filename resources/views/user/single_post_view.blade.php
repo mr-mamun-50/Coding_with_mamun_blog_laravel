@@ -22,7 +22,11 @@
                         </ul>
                         <h4 class="card-text">{{ $post->subtitle }}</h4>
                         <div class="content">
-                            <p>{{ $post->description }}</p>
+                            <p>
+                                @php
+                                    echo $post->description;
+                                @endphp
+                            </p>
                         </div>
                     </article>
 
