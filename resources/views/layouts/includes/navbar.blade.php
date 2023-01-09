@@ -19,7 +19,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link" href="shop.html">Question & Answer</a>
+                        <a class="nav-link" href="{{ route('questions') }}">Question & Answer</a>
                     </li>
                 </ul>
             </div>
@@ -51,7 +51,7 @@
 
                                 <form action="{{ route('logout') }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="dropdown-item">Logout</button>
+                                    <button type="submit" class="logout dropdown-item">Logout</button>
                                 </form>
                             @else
                                 <a class="dropdown-item" href="{{ route('login') }}">Login</a>
