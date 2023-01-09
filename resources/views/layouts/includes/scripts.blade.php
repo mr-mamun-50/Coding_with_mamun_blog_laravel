@@ -56,7 +56,7 @@
         var form = $(this).closest("form");
         event.preventDefault();
         Swal.fire({
-            title: 'Do you want to delete this question?',
+            title: 'Do you want to delete it?',
             text: "Once deleted, you will not be able to recover this!",
             icon: 'warning',
             showCancelButton: true,

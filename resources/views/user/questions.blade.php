@@ -20,7 +20,8 @@
                         <div class="mt-4 border card">
                             <div class="card-body">
                                 <div class="mb-4 d-flex justify-content-between align-items-center">
-                                    <a href="#" class="btn-link h4">{{ $question->question }}</a>
+                                    <a href="{{ route('question_answers', $question->id) }}"
+                                        class="btn-link h4">{{ $question->question }}</a>
                                     @if ($question->user_id === auth()->user()->id)
                                         <form action="{{ route('question_delete', $question->id) }}" method="post">
                                             @csrf
@@ -50,11 +51,23 @@
                                         <i class="ti-bookmark"></i>{{ $question->category_name }}
                                     </li>
                                     <li class="list-inline-item text-primary">
-                                        <i class="ti-comment"></i>5 answers
+                                        <i class="ti-comment"></i>
+                                        @php
+                                            $answers = DB::table('question_answers')
+                                                ->where('question_id', $question->id)
+                                                ->get();
+                                            echo count($answers);
+                                            if (count($answers) > 1) {
+                                                echo ' answers';
+                                            } else {
+                                                echo ' answer';
+                                            }
+                                        @endphp
                                     </li>
                                 </ul>
 
-                                <a href="./question_answers.html" class="py-1 mt-4 btn btn-outline-primary btn-sm">See
+                                <a href="{{ route('question_answers', $question->id) }}"
+                                    class="py-1 mt-4 btn btn-outline-primary btn-sm">See
                                     answers</a>
                             </div>
                         </div>

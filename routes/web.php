@@ -29,6 +29,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/questions', [UserController::class, 'questions'])->name('questions');
     Route::post('/questions/store', [UserController::class, 'question_store'])->name('question_store');
     Route::delete('/questions/{id}/delete', [UserController::class, 'question_delete'])->name('question_delete');
+
+    Route::get('/questions/answers/{id}', [UserController::class, 'question_answers'])->name('question_answers');
+    Route::post('/questions/answers/{id}/store', [UserController::class, 'question_answer_store'])->name('question_answer_store');
+    Route::delete('/questions/answers/{id}/delete', [UserController::class, 'question_answer_delete'])->name('question_answer_delete');
 });
 
 
