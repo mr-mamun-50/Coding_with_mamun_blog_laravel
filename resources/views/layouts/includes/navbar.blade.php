@@ -38,8 +38,7 @@
                                         class="rounded-circle" style="height: 30px">
                                 @endif
                             @else
-                                <img src="{{ asset('images/user_photos/user.png') }}" alt="" class="rounded-circle"
-                                    style="height: 30px">
+                                <i class="fas fa-user-circle" style="font-size: 20px"></i>
                             @endauth
 
                             <i class="ml-1 ti-angle-down"></i>

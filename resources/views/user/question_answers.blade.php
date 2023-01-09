@@ -77,8 +77,27 @@
                                             </p>
                                             <hr class="my-3">
                                             <div class="">
-                                                <i class="far fa-heart"></i>
-                                                <span class="ml-1">(10)</span>
+
+                                                @php
+                                                    $likes = DB::table('question_answer_likes')
+                                                        ->where('answer_id', $answer->id)
+                                                        ->get();
+                                                    $liker_user = DB::table('question_answer_likes')
+                                                        ->where('answer_id', $answer->id)
+                                                        ->where('user_id', auth()->user()->id)
+                                                        ->first();
+                                                @endphp
+
+                                                @if ($liker_user)
+                                                    <a href="{{ route('question_answer_unlike', $answer->id) }}">
+                                                        <i class="fa fa-heart text-danger"></i>
+                                                    </a>
+                                                @else
+                                                    <a href="{{ route('question_answer_like', $answer->id) }}">
+                                                        <i class="far fa-heart text-dark"></i>
+                                                    </a>
+                                                @endif
+                                                <span class="ml-1">({{ $likes->count() }})</span>
                                             </div>
                                         </div>
                                     </div>
