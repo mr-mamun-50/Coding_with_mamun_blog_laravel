@@ -38,6 +38,12 @@
             <span>Posts</span></a>
     </li>
 
+    <li class="nav-item @if ($page == 'messages') active @endif">
+        <a class="nav-link" href={{ route('messages.index') }}>
+            <i class="fas fa-fw fa-envelope"></i>
+            <span>Contact Messages</span></a>
+    </li>
+
 
     <!-- Heading -->
     <div class="sidebar-heading">

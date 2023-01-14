@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\MessageController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\UserController;
 
@@ -36,6 +37,9 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/questions/answers/{id}/like', [UserController::class, 'question_answer_like'])->name('question_answer_like');
     Route::get('/questions/answers/{id}/unlike', [UserController::class, 'question_answer_unlike'])->name('question_answer_unlike');
+
+    Route::get('/contact', [UserController::class, 'contact'])->name('contact');
+    Route::post('/contact/store', [UserController::class, 'contact_store'])->name('contact_store');
 });
 
 
@@ -62,4 +66,6 @@ Route::group(['middleware' => 'admin'], function () {
     Route::resource('/admin/category', CategoryController::class);
 
     Route::resource('/admin/post', PostController::class);
+
+    Route::resource('/admin/contact/messages', MessageController::class);
 });
