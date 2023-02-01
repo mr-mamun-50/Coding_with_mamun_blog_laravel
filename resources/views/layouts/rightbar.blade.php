@@ -40,14 +40,14 @@
             <!-- post-item -->
             <article class="widget-card">
                 <div class="d-flex">
-                    <img class="card-img-sm" src="{{ asset('post_thumbnails/' . $posts[$i]->thumbnail) }}">
+                    <img class="card-img-sm" src="{{ asset('post_thumbnails/' . $recentPost[$i]->thumbnail) }}">
                     <div class="ml-3">
                         <h5><a class="post-title"
-                                href="{{ route('single_post_view', $posts[$i]->id) }}">{{ $posts[$i]->title }}</a>
+                                href="{{ route('single_post_view', $recentPost[$i]->id) }}">{{ $recentPost[$i]->title }}</a>
                         </h5>
                         <ul class="mb-0 card-meta list-inline">
                             <li class="mb-0 list-inline-item">
-                                <i class="ti-calendar"></i> {{ $posts[$i]->created_at->format('d M Y') }}
+                                <i class="ti-calendar"></i> {{ $recentPost[$i]->created_at->format('d M Y') }}
                             </li>
                         </ul>
                     </div>

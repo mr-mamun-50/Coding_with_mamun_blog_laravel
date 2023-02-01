@@ -23,9 +23,16 @@ class UserController extends Controller
             ->orderby('posts.id', 'desc')
             ->paginate(5);
 
+        $recentPost = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+            ->select('posts.*', 'categories.name as category_name')
+            ->where('posts.status', 1)
+            ->orderby('posts.id', 'desc')
+            ->limit(3)
+            ->get();
+
         $categories = Category::all();
 
-        return view('user.index', compact('posts', 'categories'));
+        return view('user.index', compact('posts', 'categories', 'recentPost'));
     }
 
     public function sigle_post_view($id)
@@ -58,15 +65,16 @@ class UserController extends Controller
             ->orderby('posts.id', 'desc')
             ->paginate(5);
 
-        $posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+        $recentPost = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
             ->select('posts.*', 'categories.name as category_name')
             ->where('posts.status', 1)
             ->orderby('posts.id', 'desc')
-            ->paginate(5);
+            ->limit(3)
+            ->get();
 
         $categories = Category::all();
 
-        return view('user.filter_by_category', compact('posts', 'filtered_posts', 'categories'));
+        return view('user.filter_by_category', compact('filtered_posts', 'categories', 'recentPost'));
     }
 
     public function comment_store(Request $request, $id)
@@ -94,15 +102,16 @@ class UserController extends Controller
             ->orderby('questions.id', 'desc')
             ->paginate(5);
 
-        $posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+        $recentPost = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
             ->select('posts.*', 'categories.name as category_name')
             ->where('posts.status', 1)
             ->orderby('posts.id', 'desc')
-            ->paginate(5);
+            ->limit(3)
+            ->get();
 
         $categories = Category::all();
 
-        return view('user.questions', compact('questions', 'categories', 'posts'));
+        return view('user.questions', compact('questions', 'categories', 'recentPost'));
     }
 
     public function question_store(Request $request)
