@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Contact |
+@endsection
+
 @section('mainSection')
     <div class="text-center header">
         <div class="container">

@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Questions |
+@endsection
+
 @section('mainSection')
     @include('layouts.banner')
 

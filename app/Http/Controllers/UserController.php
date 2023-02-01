@@ -21,7 +21,7 @@ class UserController extends Controller
             ->select('posts.*', 'categories.name as category_name')
             ->where('posts.status', 1)
             ->orderby('posts.id', 'desc')
-            ->get();
+            ->paginate(5);
 
         $categories = Category::all();
 
@@ -51,14 +51,22 @@ class UserController extends Controller
     {
         $postObj = new Post();
 
-        $posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+        $filtered_posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
             ->select('posts.*', 'categories.name as category_name')
             ->where('posts.status', 1)
             ->where('posts.category_id', $id)
             ->orderby('posts.id', 'desc')
-            ->get();
+            ->paginate(5);
 
-        return view('user.filter_by_category', compact('posts'));
+        $posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+            ->select('posts.*', 'categories.name as category_name')
+            ->where('posts.status', 1)
+            ->orderby('posts.id', 'desc')
+            ->paginate(5);
+
+        $categories = Category::all();
+
+        return view('user.filter_by_category', compact('posts', 'filtered_posts', 'categories'));
     }
 
     public function comment_store(Request $request, $id)
@@ -78,6 +86,7 @@ class UserController extends Controller
     public function questions()
     {
         $questionObj = new Question();
+        $postObj = new Post();
 
         $questions = $questionObj->join('categories', 'categories.id', '=', 'questions.category_id')
             ->join('users', 'users.id', '=', 'questions.user_id')
@@ -85,9 +94,15 @@ class UserController extends Controller
             ->orderby('questions.id', 'desc')
             ->paginate(5);
 
+        $posts = $postObj->join('categories', 'categories.id', '=', 'posts.category_id')
+            ->select('posts.*', 'categories.name as category_name')
+            ->where('posts.status', 1)
+            ->orderby('posts.id', 'desc')
+            ->paginate(5);
+
         $categories = Category::all();
 
-        return view('user.questions', compact('questions', 'categories'));
+        return view('user.questions', compact('questions', 'categories', 'posts'));
     }
 
     public function question_store(Request $request)
@@ -197,5 +212,12 @@ class UserController extends Controller
 
         $notify = ['message' => 'Message Sent Successfully', 'alert-type' => 'success'];
         return redirect()->back()->with($notify);
+    }
+
+
+    //__ about function
+    public function about()
+    {
+        return view('user.about');
     }
 }

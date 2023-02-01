@@ -40,6 +40,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/contact', [UserController::class, 'contact'])->name('contact');
     Route::post('/contact/store', [UserController::class, 'contact_store'])->name('contact_store');
+
+    Route::get('/about', [UserController::class, 'about'])->name('about');
 });
 
 

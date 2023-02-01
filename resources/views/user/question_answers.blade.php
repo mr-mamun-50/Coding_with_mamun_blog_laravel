@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    Question answers |
+@endsection
+
 @section('mainSection')
     <!-- Answer section -->
     <div class="py-4"></div>

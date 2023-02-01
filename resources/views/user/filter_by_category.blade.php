@@ -8,7 +8,7 @@
                 <div class="mb-5 col-lg-8 mb-lg-0">
                     <h1 class="mb-4 h2">Showing items from <mark>{{ $posts->first()->category_name }}</mark></h1>
 
-                    @foreach ($posts as $post)
+                    @foreach ($filtered_posts as $post)
                         <article class="mb-4 card">
                             <div class="post-slider">
                                 <img src="{{ asset('post_thumbnails/' . $post->thumbnail) }}" class="card-img-top"
@@ -34,17 +34,9 @@
                         </article>
                     @endforeach
 
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item active ">
-                            <a href="#!" class="page-link">1</a>
-                        </li>
-                        <li class="page-item">
-                            <a href="#!" class="page-link">2</a>
-                        </li>
-                        <li class="page-item">
-                            <a href="#!" class="page-link">&raquo;</a>
-                        </li>
-                    </ul>
+                    <div class="mt-5">
+                        {{ $filtered_posts->links('pagination::bootstrap-5') }}
+                    </div>
                 </div>
 
                 {{-- rightbar --}}
