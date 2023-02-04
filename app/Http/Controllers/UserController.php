@@ -49,6 +49,7 @@ class UserController extends Controller
         $comments = $commentObj->join('users', 'users.id', '=', 'post_comments.user_id')
             ->select('post_comments.*', 'users.name as user_name', 'users.photo as user_photo')
             ->where('post_comments.post_id', $id)
+            ->orderby('post_comments.id', 'desc')
             ->paginate(3);
 
         return view('user.single_post_view', compact('post', 'comments'));

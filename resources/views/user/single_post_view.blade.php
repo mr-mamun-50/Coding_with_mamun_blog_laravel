@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+    {{ $post->title }} |
+@endsection
+
 @section('mainSection')
     <div class="py-4"></div>
     <section class="section">
@@ -41,10 +45,10 @@
                                 <a class="mb-3 mr-2 d-inline-block mb-md-0" href="#">
                                     @if ($comment->user_photo)
                                         <img src="{{ asset('images/user_photos/' . $comment->user_photo) }}" alt=""
-                                            class="rounded-circle mr-3" style="height: 30px">
+                                            class="mr-3 rounded-circle" style="height: 30px">
                                     @else
                                         <img src="{{ asset('images/user_photos/user.png') }}" alt=""
-                                            class="rounded-circle mr-3" style="height: 30px">
+                                            class="mr-3 rounded-circle" style="height: 30px">
                                     @endif
                                 </a>
                                 <div class="media-body">
@@ -68,7 +72,7 @@
                         <form action="{{ route('comment_store', $post->id) }}" method="POST">
                             @csrf
                             <div class="form-group">
-                                <textarea class="summernote shadow-none form-control" name="comment" rows="7" required></textarea>
+                                <textarea class="shadow-none summernote form-control" name="comment" rows="7" required></textarea>
                             </div>
 
                             <button class="btn btn-primary" type="submit">Comment Now</button>

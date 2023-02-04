@@ -137,7 +137,7 @@
 
                                             <label for="status" class="form-check-label">
                                                 <input type="checkbox" value="1" name="status" id="status"
-                                                    @if ($post->status == 1) checked @endif> Status
+                                                    @if ($post->status == 1) checked @endif> Public
                                             </label>
 
                                         </div>
@@ -220,7 +220,7 @@
                         </div>
 
                         <label for="status" class="form-check-label">
-                            <input type="checkbox" value="1" name="status" id="status"> Status
+                            <input type="checkbox" value="1" name="status" id="status"> Public
                         </label>
 
                     </div>

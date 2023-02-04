@@ -6,7 +6,7 @@
         <div class="container">
             <div class="row justify-content-center">
                 <div class="mb-5 col-lg-8 mb-lg-0">
-                    <h1 class="mb-4 h2">Showing items from <mark>{{ $posts->first()->category_name }}</mark></h1>
+                    <h1 class="mb-4 h2">Showing items from <mark>{{ $filtered_posts->first()->category_name }}</mark></h1>
 
                     @foreach ($filtered_posts as $post)
                         <article class="mb-4 card">
